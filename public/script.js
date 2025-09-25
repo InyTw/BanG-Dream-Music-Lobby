@@ -110,3 +110,50 @@ function formatTime(sec) {
   const seconds = Math.floor(sec % 60);
   return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 }
+
+
+document.addEventListener("keydown", (e) => {
+  const audio = document.getElementById("audio");
+  const playBtn = document.getElementById("play-pause");
+  const nextBtn = document.getElementById("next");
+  const prevBtn = document.getElementById("prev");
+
+  if (e.code === "Space") {
+    e.preventDefault();
+    if (audio.paused) {
+      audio.play();
+      playBtn.textContent = "⏸";
+    } else {
+      audio.pause();
+      playBtn.textContent = "▶";
+    }
+  }
+
+ 
+  if (e.shiftKey && e.code === "KeyM") {
+    nextBtn.click();
+  }
+
+ 
+  if (e.shiftKey && e.code === "KeyN") {
+    prevBtn.click();
+  }
+});
+
+audio.addEventListener("play", () => document.getElementById("play-pause").textContent = "⏸");
+audio.addEventListener("pause", () => document.getElementById("play-pause").textContent = "▶");
+
+
+// 定義背景圖陣列
+const backgrounds = [
+  'https://pbs.twimg.com/media/G1F33k1a4AAOm-9.jpg:large',
+  'https://s.yimg.com/ny/api/res/1.2/G6K_34CKaj6GmYFBYLbcYA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTM2MA--/https://s.yimg.com/os/creatr-uploaded-images/2025-02/9cdcec70-f4ca-11ef-bfb3-1426ce921efc',
+  'https://i.ytimg.com/vi/55QclsX-8dg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAOr75p7KztnnWufnoVhYyq5MK_MA',
+  'https://static.wikia.nocookie.net/bandori/images/0/0b/MyGO_Garupa.png/revision/latest/scale-to-width-down/1200?cb=20230916010734'
+];
+
+// 隨機選一張
+const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+
+// 設定到 body
+document.body.style.background = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${randomBg}') no-repeat center center/cover`;
