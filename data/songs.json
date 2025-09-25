@@ -1,0 +1,5 @@
+[
+  { "title": "Song One", "artist": "Artist A", "file": "song1.mp3" },
+  { "title": "Song Two", "artist": "Artist B", "file": "song2.mp3" },
+  { "title": "Song Three", "artist": "Artist C", "file": "song3.mp3" }
+]

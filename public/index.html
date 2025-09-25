@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>迷你 Spotify</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🎵 迷你 Spotify</h1>
+
+  <!-- 搜尋 -->
+  <input type="text" id="search" placeholder="搜尋歌曲或歌手..." />
+
+  <!-- 播放器 -->
+  <div id="player">
+    <p id="now-playing">未播放</p>
+    <audio id="audio" controls></audio>
+    <div>
+      <button id="prev">⏮ 上一首</button>
+      <button id="next">⏭ 下一首</button>
+      <button id="shuffle">🔀 隨機</button>
+      <button id="repeat">🔁 關閉</button>
+    </div>
+  </div>
+
+  <!-- 播放清單 -->
+  <div id="queue">
+    <h3>播放清單</h3>
+    <ol id="queue-list"></ol>
+  </div>
+
+  <!-- 全部歌曲清單 -->
+  <h3>所有歌曲</h3>
+  <ul id="song-list"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>

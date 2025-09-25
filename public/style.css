@@ -1,0 +1,123 @@
+/* 基本風格 */
+body {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top, #0d0d0d, #111111);
+  color: #fff;
+  overflow-x: hidden;
+  position: relative;
+  height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3em;
+  color: #1db954;
+  text-shadow: 0 0 10px #1db954;
+  margin-top: 20px;
+}
+
+/* 搜尋欄 */
+#search {
+  display: block;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 400px;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  box-shadow: 0 0 10px #1db954;
+}
+
+/* 播放器 */
+#player {
+  text-align: center;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  box-shadow: 0 0 20px #1db954;
+}
+
+#player button {
+  margin: 5px;
+  padding: 12px 18px;
+  font-size: 14px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  background: #1db954;
+  color: #fff;
+  box-shadow: 0 0 10px #1db954;
+  transition: 0.3s;
+}
+
+#player button:hover {
+  box-shadow: 0 0 20px #1db954;
+  transform: scale(1.1);
+}
+
+/* 歌曲清單 */
+#song-list, #queue-list {
+  list-style: none;
+  padding: 0;
+  max-width: 500px;
+  margin: 10px auto;
+}
+
+#song-list li, #queue-list li {
+  padding: 12px 20px;
+  margin: 8px 0;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-shadow: 0 0 5px #00ffff;
+}
+
+#song-list li:hover, #queue-list li:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+}
+
+/* Queue 標題 */
+#queue {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 10px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  box-shadow: 0 0 10px #1db954;
+}
+
+/* 落葉效果 */
+.leaf {
+  position: absolute;
+  top: -50px;
+  width: 20px;
+  height: 20px;
+  background: url('https://i.imgur.com/qQ6T5UP.png') no-repeat center/contain;
+  pointer-events: none;
+  opacity: 0.8;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0.2;
+  }
+}
