@@ -13,18 +13,6 @@ let currentIndex = -1;
 let shuffleMode = false;
 let repeatMode = 0;
 
-// ---------- 渲染歌曲 ----------
-function renderSongs(songs) {
-  const list = document.getElementById("song-list");
-  list.innerHTML = "";
-  songs.forEach((song, i) => {
-    const li = document.createElement("li");
-    li.textContent = `${song.title} - ${song.artist}`;
-    li.onclick = () => playSong(i);
-    list.appendChild(li);
-  });
-}
-
 // ---------- 播放歌曲 ----------
 function playSong(index) {
   if (index < 0 || index >= filteredSongs.length) return;
@@ -39,17 +27,17 @@ function playSong(index) {
   updateQueue();
 }
 
-// ---------- 更新播放清單 ----------
+// ---------- 更新播放清單 (Queue) ----------
 function updateQueue() {
   const queueList = document.getElementById("queue-list");
   queueList.innerHTML = "";
-  for (let i = currentIndex + 1; i < filteredSongs.length; i++) {
+  filteredSongs.forEach((song, i) => {
     const li = document.createElement("li");
-    li.textContent = `${filteredSongs[i].title} - ${filteredSongs[i].artist}`;
+    li.textContent = `${song.title} - ${song.artist}`;
     li.onclick = () => playSong(i);
     queueList.appendChild(li);
-  }
-  if (queueList.innerHTML === "") queueList.innerHTML = "<li>(沒有下一首)</li>";
+  });
+  if (queueList.innerHTML === "") queueList.innerHTML = "<li>(沒有歌曲)</li>";
 }
 
 // ---------- 搜尋 ----------
@@ -60,13 +48,16 @@ searchInput.addEventListener("input", (e) => {
     song.title.toLowerCase().includes(keyword) ||
     song.artist.toLowerCase().includes(keyword)
   );
-  renderSongs(filteredSongs);
   updateQueue();
 });
-searchInput.addEventListener("keydown", (e) => { if (e.key === "Enter" && filteredSongs.length > 0) playSong(0); });
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && filteredSongs.length > 0) playSong(0);
+});
 
 // ---------- 上一首/下一首/隨機/重複 ----------
-document.getElementById("prev").addEventListener("click", () => { if (currentIndex > 0) playSong(currentIndex - 1); });
+document.getElementById("prev").addEventListener("click", () => {
+  if (currentIndex > 0) playSong(currentIndex - 1);
+});
 document.getElementById("next").addEventListener("click", () => {
   if (shuffleMode) playRandomSong();
   else if (currentIndex < filteredSongs.length - 1) playSong(currentIndex + 1);
@@ -89,6 +80,7 @@ document.getElementById("audio").addEventListener("ended", () => {
   else if (currentIndex < filteredSongs.length - 1) playSong(currentIndex + 1);
   else if (repeatMode === 1) playSong(0);
 });
+
 function playRandomSong() {
   if (filteredSongs.length <= 1) return;
   let nextIndex;
@@ -109,5 +101,4 @@ function createLeaf() {
 setInterval(createLeaf, 500);
 
 // ---------- 初始化 ----------
-renderSongs(allSongs);
 updateQueue();

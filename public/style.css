@@ -1,9 +1,10 @@
-/* 基本風格 */
+/* ========== 基本風格 ========== */
 body {
   font-family: 'Segoe UI', Roboto, sans-serif;
   margin: 0;
   padding: 0;
-  
+
+  /* 背景圖 + 半透明黑遮罩 */
   background: 
     linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
     url('https://pbs.twimg.com/media/G1F33k1a4AAOm-9.jpg:large') no-repeat center center/cover;
@@ -20,6 +21,31 @@ h1 {
   color: #1db954;
   text-shadow: 0 0 10px #1db954;
   margin-top: 20px;
+}
+
+/* ========== 主容器 ========== */
+#main-container {
+  display: flex;
+  justify-content: flex-start; /* 左側對齊，右側固定播放清單 */
+  gap: 40px;
+  margin-top: 20px;
+}
+
+/* 左側播放器 + 搜尋 + 歌曲清單 */
+#left-panel {
+  flex: 1;
+  max-width: 800px;
+}
+
+/* 右側播放清單固定 */
+#right-panel {
+  position: fixed;
+  top: 100px; /* 距離頁面頂部 */
+  right: 20px; /* 距離右側邊緣 */
+  width: 300px;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 100;
 }
 
 /* 搜尋欄 */
@@ -67,11 +93,12 @@ h1 {
   transform: scale(1.1);
 }
 
-/* 歌曲清單 */
+/* ========== 歌曲清單 ========== */
 #song-list, #queue-list {
   list-style: none;
   padding: 0;
-  max-width: 500px;
+  max-height: 400px;
+  overflow-y: auto;
   margin: 10px auto;
 }
 
@@ -90,17 +117,15 @@ h1 {
   transform: translateX(5px);
 }
 
-/* Queue 標題 */
+/* ========== Queue ========== */
 #queue {
-  max-width: 500px;
-  margin: 20px auto;
-  padding: 10px;
+  padding: 20px;
   background: rgba(255,255,255,0.05);
   border-radius: 15px;
   box-shadow: 0 0 10px #1db954;
 }
 
-/* 落葉效果 */
+/* ========== 落葉效果 ========== */
 .leaf {
   position: absolute;
   top: -50px;
