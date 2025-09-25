@@ -8,7 +8,7 @@ let allSongs = [], filteredSongs = [], currentIndex = -1;
 let shuffleMode = false, repeatMode = 0;
 
 // 讀取 songs.json
-fetch('../data/songs.json')
+fetch('./data/songs.json')
   .then(res => res.json())
   .then(data => { allSongs = data; filteredSongs = allSongs.slice(); updateQueue(); })
   .catch(err => console.error(err));
