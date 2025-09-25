@@ -90,3 +90,23 @@ function playSong(index){
 
   updateQueue();
 }
+
+
+const timeDisplay = document.getElementById("time-display");
+
+audio.addEventListener("timeupdate", () => {
+  const current = formatTime(audio.currentTime);
+  const duration = formatTime(audio.duration);
+  timeDisplay.textContent = `${current} / ${duration}`;
+
+  // 更新進度條
+  const percent = (audio.currentTime / audio.duration) * 100;
+  progress.style.width = percent + "%";
+});
+
+function formatTime(sec) {
+  if (isNaN(sec)) return "00:00";
+  const minutes = Math.floor(sec / 60);
+  const seconds = Math.floor(sec % 60);
+  return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+}

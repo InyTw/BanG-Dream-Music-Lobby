@@ -68,6 +68,15 @@ h1 {
   word-break: break-word;
 }
 
+#time-display {
+  text-align: center;
+  font-size: 14px;
+  color: #12b69b;
+  margin-bottom: 10px;
+  text-shadow: 0 0 5px #12b69b;
+}
+
+
 .controls {
   display: flex;
   justify-content: center;
