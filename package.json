@@ -1,12 +1,5 @@
 {
-  "name": "maybe-like-spotify-lah",
-  "version": "1.0.0",
-  "main": "server.js",
-  "type": "module",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "express": "^4.19.2"
-  }
+  "name": "bang-dream-music",
+  "version": "1.0.1",
+  "main": "index.html"
 }

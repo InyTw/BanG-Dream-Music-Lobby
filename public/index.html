@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>迷你 Spotify</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://yt3.googleusercontent.com/ktxXdANJ7KtKfgE1qyVFqsWm32YAxT4RBU_BpWOkx1kNYyVVhSHiO_KKa0ujKntuI0MVbz3FOQ=s160-c-k-c0x00ffffff-no-rj">
 </head>
 <body>
   <h1>🎵 迷你 Spotify</h1>
@@ -14,19 +15,27 @@
       <input type="text" id="search" placeholder="搜尋歌曲或歌手...">
 
       <div id="player">
-        <p id="now-playing">未播放</p>
-        <audio id="audio" controls></audio>
-        <div>
-          <button id="prev">⏮ 上一首</button>
-          <button id="next">⏭ 下一首</button>
-          <button id="shuffle">🔀 隨機</button>
-          <button id="repeat">🔁 關閉</button>
+        <div id="now-playing">未播放</div>
+
+        <!-- 進度條 -->
+        <div id="progress-container">
+          <div id="progress"></div>
+        </div>
+
+        <!-- 播放控制 -->
+        <div class="controls">
+          <button id="prev">⏮</button>
+          <button id="play-pause">▶</button>
+          <button id="next">⏭</button>
+          <button id="shuffle">🔀</button>
+          <button id="repeat">🔁</button>
+        </div>
+
+        <!-- 音量控制 -->
+        <div id="volume-container">
+          <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5">
         </div>
       </div>
-
-      <!-- 刪除所有歌曲清單 -->
-      <!-- <h3>所有歌曲</h3>
-      <ul id="song-list"></ul> -->
     </div>
 
     <div id="right-panel">
@@ -37,6 +46,7 @@
     </div>
   </div>
 
+  <audio id="audio"></audio>
   <script src="script.js"></script>
 </body>
 </html>

@@ -1,104 +1,75 @@
-// 完全靜態版
-const allSongs = [
-  { title: "エガクミライ", artist: "It's MyGo!!!!!", file: "https://raw.githubusercontent.com/InyTw/maybe-like-spotify-lah/main/songs/エガクミライ.mp3" },
-  { title: "往欄印", artist: "It's MyGo!!!!!", file: "https://raw.githubusercontent.com/InyTw/maybe-like-spotify-lah/main/songs/往欄印.mp3" },
-  { title: "春日影", artist: "It's MyGo!!!!!", file: "https://raw.githubusercontent.com/InyTw/maybe-like-spotify-lah/main/songs/MyGo!!!!!春日影.mp3" },
-  { title: "聿日箋秋", artist: "It's MyGo!!!!!", file: "https://raw.githubusercontent.com/InyTw/maybe-like-spotify-lah/main/songs/聿日箋秋.mp3" },
-  { title: "夜隠染", artist: "It's MyGo!!!!!", file: "https://raw.githubusercontent.com/InyTw/maybe-like-spotify-lah/main/songs/夜隠染.mp3" },
-  { title: "跡暖空", artist: "It's MyGo!!!!!", file: "https://raw.githubusercontent.com/InyTw/maybe-like-spotify-lah/main/songs/跡暖空.mp3" }
-];
+const audio = document.getElementById("audio");
+const playBtn = document.getElementById("play-pause");
+const progress = document.getElementById("progress");
+const progressContainer = document.getElementById("progress-container");
+const volumeSlider = document.getElementById("volume");
 
-let filteredSongs = allSongs.slice();
-let currentIndex = -1;
-let shuffleMode = false;
-let repeatMode = 0;
+let allSongs = [], filteredSongs = [], currentIndex = -1;
+let shuffleMode = false, repeatMode = 0;
 
-// ---------- 播放歌曲 ----------
-function playSong(index) {
-  if (index < 0 || index >= filteredSongs.length) return;
+// 讀取 songs.json
+fetch('../data/songs.json')
+  .then(res => res.json())
+  .then(data => { allSongs = data; filteredSongs = allSongs.slice(); updateQueue(); })
+  .catch(err => console.error(err));
+
+function playSong(index){
+  if(index < 0 || index >= filteredSongs.length) return;
   currentIndex = index;
   const song = filteredSongs[currentIndex];
-  const audio = document.getElementById("audio");
-  const nowPlaying = document.getElementById("now-playing");
-
   audio.src = song.file;
-  audio.play().catch(err => console.log("播放錯誤:", err));
-  nowPlaying.textContent = `▶️ ${song.title} - ${song.artist}`;
+  audio.play().catch(err=>console.log(err));
+  document.getElementById("now-playing").textContent = `▶ ${song.title} - ${song.artist}`;
   updateQueue();
+  playBtn.textContent = "⏸";
 }
 
-// ---------- 更新播放清單 (Queue) ----------
-function updateQueue() {
+playBtn.addEventListener("click", ()=>{
+  if(audio.paused && currentIndex >=0){ audio.play(); playBtn.textContent="⏸"; }
+  else{ audio.pause(); playBtn.textContent="▶"; }
+});
+
+function updateQueue(){
   const queueList = document.getElementById("queue-list");
-  queueList.innerHTML = "";
-  filteredSongs.forEach((song, i) => {
+  queueList.innerHTML="";
+  filteredSongs.forEach((song,i)=>{
     const li = document.createElement("li");
-    li.textContent = `${song.title} - ${song.artist}`;
-    li.onclick = () => playSong(i);
+    li.textContent = song.title;
+    li.setAttribute("data-artist", song.artist);
+    li.onclick = ()=>playSong(i);
+    if(i===currentIndex) li.classList.add("playing");
     queueList.appendChild(li);
   });
-  if (queueList.innerHTML === "") queueList.innerHTML = "<li>(沒有歌曲)</li>";
+  const currentLi = queueList.querySelector(".playing");
+  if(currentLi) currentLi.scrollIntoView({behavior:"smooth", block:"center"});
 }
 
-// ---------- 搜尋 ----------
-const searchInput = document.getElementById("search");
-searchInput.addEventListener("input", (e) => {
+// 搜尋
+document.getElementById("search").addEventListener("input",e=>{
   const keyword = e.target.value.toLowerCase();
-  filteredSongs = allSongs.filter(song =>
-    song.title.toLowerCase().includes(keyword) ||
-    song.artist.toLowerCase().includes(keyword)
-  );
+  filteredSongs = allSongs.filter(s=>s.title.toLowerCase().includes(keyword) || s.artist.toLowerCase().includes(keyword));
   updateQueue();
 });
-searchInput.addEventListener("keydown", (e) => {
-  if (e.key === "Enter" && filteredSongs.length > 0) playSong(0);
-});
+document.getElementById("search").addEventListener("keydown", e=>{ if(e.key==="Enter" && filteredSongs.length>0) playSong(0); });
 
-// ---------- 上一首/下一首/隨機/重複 ----------
-document.getElementById("prev").addEventListener("click", () => {
-  if (currentIndex > 0) playSong(currentIndex - 1);
-});
-document.getElementById("next").addEventListener("click", () => {
-  if (shuffleMode) playRandomSong();
-  else if (currentIndex < filteredSongs.length - 1) playSong(currentIndex + 1);
-  else if (repeatMode === 1) playSong(0);
-});
-document.getElementById("shuffle").addEventListener("click", () => {
-  shuffleMode = !shuffleMode;
-  document.getElementById("shuffle").textContent = shuffleMode ? "✅ 隨機" : "🔀 隨機";
-});
-document.getElementById("repeat").addEventListener("click", () => {
-  repeatMode = (repeatMode + 1) % 3;
-  const btn = document.getElementById("repeat");
-  if (repeatMode === 0) btn.textContent = "🔁 關閉";
-  if (repeatMode === 1) btn.textContent = "🔁 全部";
-  if (repeatMode === 2) btn.textContent = "🔂 單曲";
-});
-document.getElementById("audio").addEventListener("ended", () => {
-  if (repeatMode === 2) playSong(currentIndex);
-  else if (shuffleMode) playRandomSong();
-  else if (currentIndex < filteredSongs.length - 1) playSong(currentIndex + 1);
-  else if (repeatMode === 1) playSong(0);
-});
+// 控制按鈕
+document.getElementById("prev").addEventListener("click", ()=>{ if(currentIndex>0) playSong(currentIndex-1); });
+document.getElementById("next").addEventListener("click", ()=>{ if(shuffleMode) playRandomSong(); else if(currentIndex<filteredSongs.length-1) playSong(currentIndex+1); else if(repeatMode===1) playSong(0); });
+document.getElementById("shuffle").addEventListener("click", ()=>{ shuffleMode=!shuffleMode; document.getElementById("shuffle").textContent=shuffleMode?"✅":"🔀"; });
+document.getElementById("repeat").addEventListener("click", ()=>{ repeatMode=(repeatMode+1)%3; document.getElementById("repeat").textContent=repeatMode===0?"🔁 關閉":repeatMode===1?"🔁 全部":"🔂 單曲"; });
 
-function playRandomSong() {
-  if (filteredSongs.length <= 1) return;
-  let nextIndex;
-  do { nextIndex = Math.floor(Math.random() * filteredSongs.length); } while (nextIndex === currentIndex);
-  playSong(nextIndex);
-}
+audio.addEventListener("ended", ()=>{ if(repeatMode===2) playSong(currentIndex); else if(shuffleMode) playRandomSong(); else if(currentIndex<filteredSongs.length-1) playSong(currentIndex+1); else if(repeatMode===1) playSong(0); });
+function playRandomSong(){ if(filteredSongs.length<=1) return; let next; do{next=Math.floor(Math.random()*filteredSongs.length);}while(next===currentIndex); playSong(next); }
 
-// ---------- 落葉 ----------
-function createLeaf() {
-  const leaf = document.createElement('div');
-  leaf.className = 'leaf';
-  leaf.style.left = Math.random() * window.innerWidth + 'px';
-  leaf.style.animationDuration = (5 + Math.random() * 10) + 's';
-  leaf.style.transform = `rotate(${Math.random() * 360}deg)`;
-  document.body.appendChild(leaf);
-  setTimeout(() => leaf.remove(), 15000);
-}
-setInterval(createLeaf, 500);
+// 進度條
+audio.addEventListener("timeupdate", ()=>{ progress.style.width=(audio.currentTime/audio.duration*100)+"%"; });
+progressContainer.addEventListener("click", e=>{ const rect=progressContainer.getBoundingClientRect(); audio.currentTime=((e.clientX-rect.left)/rect.width)*audio.duration; });
 
-// ---------- 初始化 ----------
+// 音量
+volumeSlider.addEventListener("input", e=>{ audio.volume=e.target.value; });
+
+// 落葉效果
+function createLeaf(){ const leaf=document.createElement('div'); leaf.className='leaf'; leaf.style.left=Math.random()*window.innerWidth+'px'; leaf.style.animationDuration=(5+Math.random()*10)+'s'; leaf.style.transform=`rotate(${Math.random()*360}deg)`; document.body.appendChild(leaf); setTimeout(()=>leaf.remove(),15000); }
+setInterval(createLeaf,500);
+
 updateQueue();
