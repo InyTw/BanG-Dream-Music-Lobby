@@ -86,7 +86,6 @@ function playSong(index){
   const nowPlayingText = `▶️ ${song.title} - ${song.artist}`;
   document.getElementById("now-playing").textContent = nowPlayingText;
 
-  // ✅ 同步到網頁標題
   document.title = `${song.title} - ${song.artist}`;
 
   updateQueue();
