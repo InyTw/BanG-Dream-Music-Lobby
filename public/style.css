@@ -24,15 +24,20 @@ h1 {
   margin-top: 20px;
 }
 
-#left-panel { flex: 1; max-width: 800px; }
+#left-panel {
+  flex: 1;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #right-panel { width: 300px; max-height: 80vh; overflow-y: auto; overflow-x: hidden; position: relative; }
 
 #queue { padding: 20px; background: rgba(255,255,255,0.05); border-radius: 15px; box-shadow: 0 0 10px #12b69b; }
 
 #search {
-  display: block;
-  margin: 20px auto;
-  width: 90%;
+  width: 80%;
   max-width: 400px;
   padding: 12px 20px;
   border-radius: 30px;
@@ -42,6 +47,8 @@ h1 {
   background: rgba(255, 255, 255, 0.05);
   color: #fff;
   box-shadow: 0 0 10px #12b69b;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 #player {
