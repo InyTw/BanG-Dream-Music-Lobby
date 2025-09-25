@@ -73,3 +73,21 @@ function createLeaf(){ const leaf=document.createElement('div'); leaf.className=
 setInterval(createLeaf,500);
 
 updateQueue();
+
+
+function playSong(index){
+  if(index < 0 || index >= filteredSongs.length) return;
+  currentIndex = index;
+  const song = filteredSongs[currentIndex];
+  audio.src = song.file;
+  audio.play().catch(err=>console.log("播放錯誤:", err));
+
+  // 更新畫面
+  const nowPlayingText = `▶️ ${song.title} - ${song.artist}`;
+  document.getElementById("now-playing").textContent = nowPlayingText;
+
+  // ✅ 同步到網頁標題
+  document.title = `${song.title} - ${song.artist}`;
+
+  updateQueue();
+}
