@@ -1,7 +1,7 @@
 // 完全靜態版
 const allSongs = [
   { title: "エガクミライ", artist: "It's MyGo!!!!!", file: "https://raw.githubusercontent.com/InyTw/maybe-like-spotify-lah/main/songs/エガクミライ.mp3" },
-  { title: "Song Two", artist: "Artist B", file: "https://raw.githubusercontent.com/InyTw/maybe-like-spotify-lah/main/songs/song2.mp3" }
+  { title: "往欄印", artist: "It's MyGo!!!!!", file: "https://raw.githubusercontent.com/InyTw/maybe-like-spotify-lah/main/songs/往欄印.mp3" }
 ];
 
 let filteredSongs = allSongs.slice();
