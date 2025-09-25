@@ -3,7 +3,11 @@ body {
   font-family: 'Segoe UI', Roboto, sans-serif;
   margin: 0;
   padding: 0;
-  background: radial-gradient(circle at top, #0d0d0d, #111111);
+  
+  background: 
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('https://pbs.twimg.com/media/G1F33k1a4AAOm-9.jpg:large') no-repeat center center/cover;
+
   color: #fff;
   overflow-x: hidden;
   position: relative;
@@ -102,7 +106,7 @@ h1 {
   top: -50px;
   width: 20px;
   height: 20px;
-  background: url('https://i.imgur.com/qQ6T5UP.png') no-repeat center/contain;
+  background: url('https://png.pngtree.com/png-vector/20240528/ourmid/pngtree-single-dried-fallen-leaf-png-image_12534679.png') no-repeat center/contain;
   pointer-events: none;
   opacity: 0.8;
   animation: fall linear infinite;
