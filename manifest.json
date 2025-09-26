@@ -1,0 +1,15 @@
+{
+  "name": "bang-dream-music",
+  "short_name": "ban-ban-music",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#12b69b",
+  "icons": [
+    {
+      "src": "https://yt3.googleusercontent.com/ktxXdANJ7KtKfgE1qyVFqsWm32YAxT4RBU_BpWOkx1kNYyVVhSHiO_KKa0ujKntuI0MVbz3FOQ=s160-c-k-c0x00ffffff-no-rj",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
