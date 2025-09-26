@@ -1,9 +1,9 @@
 {
-  "name": "bang-dream-music",
-  "short_name": "ban-ban-music",
+  "name": "BanGDream-Music",
+  "short_name": "BanGDream-Music",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#000000",
+  "background_color": "#12b69b",
   "theme_color": "#12b69b",
   "icons": [
     {
