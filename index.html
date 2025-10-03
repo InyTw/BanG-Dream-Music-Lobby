@@ -10,7 +10,21 @@
   <link rel="icon" href="https://yt3.googleusercontent.com/ktxXdANJ7KtKfgE1qyVFqsWm32YAxT4RBU_BpWOkx1kNYyVVhSHiO_KKa0ujKntuI0MVbz3FOQ=s160-c-k-c0x00ffffff-no-rj">
 </head>
 <body>
-  <h1>🎵 BanG Dream | 全音樂大廳</h1>
+  <!-- 側邊選單開關按鈕 -->
+  <button id="side-menu-toggle" aria-label="開關選單">☰</button>
+
+  <!-- 側邊選單 -->
+  <nav id="side-menu" class="side-menu-closed">
+    <ul>
+      <li><a href="#">首頁</a></li>
+      <li><a href="#">熱門歌曲</a></li>
+      <li><a href="#">我的最愛</a></li>
+      <li><a href="#">設定</a></li>
+      <li><a href="#">關於</a></li>
+    </ul>
+  </nav>
+
+  <h1>🎵 BanG Dream | 音樂廳</h1>
 
   <div id="main-container">
     <div id="left-panel">
@@ -51,5 +65,14 @@
 
   <audio id="audio"></audio>
   <script src="script.js"></script>
+  <script>
+    // 側邊選單開關
+    const sideMenu = document.getElementById('side-menu');
+    const sideMenuToggle = document.getElementById('side-menu-toggle');
+    sideMenuToggle.addEventListener('click', () => {
+      sideMenu.classList.toggle('side-menu-open');
+      sideMenu.classList.toggle('side-menu-closed');
+    });
+  </script>
 </body>
 </html>

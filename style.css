@@ -1,4 +1,127 @@
 body {
+/* 側邊選單開關按鈕 */
+#side-menu-toggle {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 1201;
+  background: rgba(58,141,222,0.95);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 2em;
+  box-shadow: 0 0 12px #3a8dde;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+#side-menu-toggle:hover {
+  background: #6dd5fa;
+  color: #3a8dde;
+  transform: scale(1.1);
+}
+
+/* 側邊選單本體 */
+#side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background: rgba(58,141,222,0.98);
+  box-shadow: 2px 0 24px #3a8dde;
+  z-index: 1200;
+  padding-top: 80px;
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow-y: auto;
+}
+#side-menu.side-menu-open {
+  transform: translateX(0);
+  box-shadow: 2px 0 32px #6dd5fa;
+}
+#side-menu.side-menu-closed {
+  transform: translateX(-100%);
+}
+#side-menu ul {
+  list-style: none;
+  padding: 0 0 0 20px;
+  margin: 0;
+}
+#side-menu li {
+  margin-bottom: 24px;
+}
+#side-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-family: 'ZCOOL KuaiLe', 'Comic Neue', 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+#side-menu a:hover {
+  color: #b3e0ff;
+  text-shadow: 0 0 8px #6dd5fa;
+}
+
+/* 側邊選單展開時，主內容往右推一點 */
+#side-menu.side-menu-open ~ h1,
+#side-menu.side-menu-open ~ #main-container {
+  margin-left: 220px;
+  transition: margin-left 0.3s cubic-bezier(.4,2,.6,1);
+}
+
+/* 側邊選單展開時，開關按鈕也往右推 */
+#side-menu.side-menu-open ~ #side-menu-toggle {
+  left: 244px;
+  transition: left 0.3s cubic-bezier(.4,2,.6,1);
+}
+
+@media (max-width: 768px) {
+  #side-menu {
+    width: 70vw;
+    min-width: 160px;
+    max-width: 320px;
+    border-radius: 0 16px 16px 0;
+    padding-top: 60px;
+  }
+  #side-menu.side-menu-open ~ h1,
+  #side-menu.side-menu-open ~ #main-container {
+    margin-left: 0;
+  }
+  #side-menu-toggle {
+    top: 12px;
+    left: 12px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5em;
+  }
+  #side-menu.side-menu-open ~ #side-menu-toggle {
+    left: calc(70vw + 12px);
+  }
+}
+
+@media (max-width: 480px) {
+  #side-menu {
+    width: 90vw;
+    min-width: 120px;
+    padding-top: 48px;
+    border-radius: 0 10px 10px 0;
+  }
+  #side-menu-toggle {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2em;
+    top: 8px;
+    left: 8px;
+  }
+  #side-menu.side-menu-open ~ #side-menu-toggle {
+    left: calc(90vw + 8px);
+  }
+}
   font-family: 'Segoe UI', Roboto, 'ZCOOL KuaiLe', 'Comic Neue', sans-serif;
   margin: 0;
   padding: 0;
