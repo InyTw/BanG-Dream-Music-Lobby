@@ -1,3 +1,140 @@
+/* --- 首頁 home.html 動漫風格與 navbar --- */
+.navbar-anime {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  background: linear-gradient(90deg, #3a8dde 60%, #6dd5fa 100%);
+  box-shadow: 0 2px 16px #3a8dde44;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 60px;
+  font-family: 'ZCOOL KuaiLe', 'Comic Neue', 'Segoe UI', Roboto, sans-serif;
+}
+.navbar-logo {
+  font-size: 2em;
+  color: #fff;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px #6dd5fa, 0 0 0.5em #3a8dde;
+}
+.navbar-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.navbar-links li a {
+  color: #e6f7ff;
+  font-size: 1.1em;
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.navbar-links li a:hover {
+  background: #b3e0ff33;
+  color: #3a8dde;
+  box-shadow: 0 0 8px #6dd5fa;
+}
+
+#home-main {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80vh;
+}
+.home-hero {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.anime-title {
+  font-size: 2.8em;
+  color: #e6f7ff;
+  font-family: 'ZCOOL KuaiLe', 'Comic Neue', 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 8px #6dd5fa, 0 0 0.5em #3a8dde;
+}
+.anime-desc {
+  font-size: 1.3em;
+  color: #b3e0ff;
+  margin-bottom: 24px;
+  text-shadow: 0 0 8px #3a8dde;
+}
+.anime-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #3a8dde, #6dd5fa);
+  color: #fff;
+  font-size: 1.2em;
+  padding: 12px 32px;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 0 18px #3a8dde;
+  transition: background 0.2s, transform 0.2s;
+}
+.anime-btn:hover {
+  background: #6dd5fa;
+  color: #3a8dde;
+  transform: scale(1.08);
+}
+.home-banner {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+}
+.banner-img {
+  max-width: 90vw;
+  max-height: 320px;
+  border-radius: 18px;
+  box-shadow: 0 0 32px #3a8dde99;
+}
+
+@media (max-width: 768px) {
+  .navbar-anime {
+    padding: 0 10px;
+    height: 48px;
+  }
+  .navbar-logo {
+    font-size: 1.3em;
+  }
+  .navbar-links {
+    gap: 12px;
+  }
+  #home-main {
+    margin-top: 60px;
+  }
+  .anime-title {
+    font-size: 1.6em;
+  }
+  .banner-img {
+    max-height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-anime {
+    height: 38px;
+    padding: 0 4px;
+  }
+  .navbar-logo {
+    font-size: 1em;
+  }
+  .navbar-links li a {
+    font-size: 0.9em;
+    padding: 4px 8px;
+  }
+  #home-main {
+    margin-top: 38px;
+  }
+  .banner-img {
+    max-height: 100px;
+  }
+}
 body {
 /* 側邊選單開關按鈕 */
 #side-menu-toggle {
@@ -148,14 +285,15 @@ h1 {
     0 0 0.5em #3a8dde,
     0 0 2em #b3e0ff,
     2px 2px 0 #fff;
-  margin-top: 20px;
+  margin-top: 60px;
+  margin-bottom: 18px;
 }
 
 #main-container {
   display: flex;
   justify-content: flex-start;
   gap: 40px;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 #left-panel {

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>邦邦世界 | 首頁</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://yt3.googleusercontent.com/ktxXdANJ7KtKfgE1qyVFqsWm32YAxT4RBU_BpWOkx1kNYyVVhSHiO_KKa0ujKntuI0MVbz3FOQ=s160-c-k-c0x00ffffff-no-rj">
+</head>
+<body>
+  <!-- Navbar (內容你可自行補充) -->
+  <nav id="navbar" class="navbar-anime">
+    <div class="navbar-logo">🎵 BanG Dream</div>
+    <ul class="navbar-links">
+      <li><a href="/">首頁</a></li>
+      <li><a href="music.html">音樂廳</a></li>
+      <li><a href="#">關於</a></li>
+    </ul>
+  </nav>
+
+  <main id="home-main">
+    <section class="home-hero">
+      <h1 class="anime-title">歡迎來到 邦邦世界！</h1>
+      <p class="anime-desc">在這裡享受BanG Dream 的偉大吧！</p>
+      <a href="music.html" class="anime-btn">🎶 進入音樂廳</a>
+    </section>
+    <section class="home-banner">
+      <img src="https://pbs.twimg.com/media/G1F33k1a4AAOm-9.jpg:large" alt="BanG Dream Banner" class="banner-img">
+    </section>
+  </main>
+
+  <script>
+    // Navbar 動畫效果
+    const navbar = document.getElementById('navbar');
+    // 進入時淡入動畫
+    navbar.style.opacity = '0';
+    navbar.style.transition = 'opacity 0.8s cubic-bezier(.4,2,.6,1)';
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => { navbar.style.opacity = '1'; }, 100);
+    });
+
+    // 滾動時陰影與背景透明度變化
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        navbar.style.background = 'rgba(58,141,222,0.92)';
+        navbar.style.boxShadow = '0 4px 24px #3a8dde88';
+      } else {
+        navbar.style.background = '';
+        navbar.style.boxShadow = '';
+      }
+    });
+  </script>
+</body>
+</html>
