@@ -5,8 +5,8 @@
   <meta name="theme-color" content="#12b69b">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>邦邦世界 | 音樂廳</title>
-  <link rel="stylesheet" href="style.css">
+  <title>邦邦世界 | 邦邦音樂廳</title>
+  <link rel="stylesheet" href="/css/music.css">
   <link rel="icon" href="https://yt3.googleusercontent.com/ktxXdANJ7KtKfgE1qyVFqsWm32YAxT4RBU_BpWOkx1kNYyVVhSHiO_KKa0ujKntuI0MVbz3FOQ=s160-c-k-c0x00ffffff-no-rj">
 </head>
 <body>
@@ -16,14 +16,14 @@
   <!-- 側邊選單 -->
   <nav id="side-menu" class="side-menu-closed">
     <ul>
-      <li><a href="home.html">首頁</a></li>
-      <li><a href="music.html">音樂廳</a></li>
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="music.html">邦邦音樂廳</a></li>
       <li><a href="#">設定</a></li>
       <li><a href="#">關於</a></li>
     </ul>
   </nav>
 
-  <h1>🎵 BanG Dream | 音樂廳</h1>
+  <h1>🎵 邦邦世界 | 邦邦音樂廳</h1>
 
   <div id="main-container">
     <div id="left-panel">
@@ -63,15 +63,6 @@
   </div>
 
   <audio id="audio"></audio>
-  <script src="script.js"></script>
-  <script>
-    // 側邊選單開關
-    const sideMenu = document.getElementById('side-menu');
-    const sideMenuToggle = document.getElementById('side-menu-toggle');
-    sideMenuToggle.addEventListener('click', () => {
-      sideMenu.classList.toggle('side-menu-open');
-      sideMenu.classList.toggle('side-menu-closed');
-    });
-  </script>
+  <script src="script/script.js"></script>
 </body>
 </html>

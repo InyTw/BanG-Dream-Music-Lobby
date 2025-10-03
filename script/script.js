@@ -148,8 +148,7 @@ audio.addEventListener("pause", () => document.getElementById("play-pause").text
 const backgrounds = [
   'https://pbs.twimg.com/media/G1F33k1a4AAOm-9.jpg:large',
   'https://s.yimg.com/ny/api/res/1.2/G6K_34CKaj6GmYFBYLbcYA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTM2MA--/https://s.yimg.com/os/creatr-uploaded-images/2025-02/9cdcec70-f4ca-11ef-bfb3-1426ce921efc',
-  'https://i.ytimg.com/vi/55QclsX-8dg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAOr75p7KztnnWufnoVhYyq5MK_MA',
-  'https://static.wikia.nocookie.net/bandori/images/0/0b/MyGO_Garupa.png/revision/latest/scale-to-width-down/1200?cb=20230916010734'
+  'https://i.ytimg.com/vi/55QclsX-8dg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAOr75p7KztnnWufnoVhYyq5MK_MA'
 ];
 
 // 隨機選一張
@@ -157,3 +156,11 @@ const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
 
 // 設定到 body
 document.body.style.background = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${randomBg}') no-repeat center center/cover`;
+
+// 側邊選單開關
+    const sideMenu = document.getElementById('side-menu');
+    const sideMenuToggle = document.getElementById('side-menu-toggle');
+    sideMenuToggle.addEventListener('click', () => {
+      sideMenu.classList.toggle('side-menu-open');
+      sideMenu.classList.toggle('side-menu-closed');
+    });

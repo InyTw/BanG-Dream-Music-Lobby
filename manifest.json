@@ -1,6 +1,6 @@
 {
-  "name": "BanGDream-Music",
-  "short_name": "BanGDream-Music",
+  "name": "邦邦世界",
+  "short_name": "邦邦世界",
   "start_url": "./home.html",
   "display": "standalone",
   "background_color": "#12b69b",

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>邦邦世界 | 首頁</title>
+  <title>邦邦梗圖蒐尋器</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="https://yt3.googleusercontent.com/ktxXdANJ7KtKfgE1qyVFqsWm32YAxT4RBU_BpWOkx1kNYyVVhSHiO_KKa0ujKntuI0MVbz3FOQ=s160-c-k-c0x00ffffff-no-rj">
 </head>
@@ -27,16 +27,16 @@
 
   <main id="home-main">
     <section class="home-hero">
-      <h1 class="anime-title">歡迎來到 邦邦世界！</h1>
-      <p class="anime-desc">在這裡享受BanG Dream的偉大吧！</p>
-
-      <!-- anime-btn -->
-      <a href="music.html" class="anime-btn">🎶 進入邦邦音樂廳</a>
-      <a href="search.html" class="anime-btn">🎶 進入邦邦梗圖蒐尋器</a>
-
+      <div class="meme-search-card">
+        <h1 class="anime-title">邦邦梗圖蒐尋器</h1>
+        <p class="anime-desc">輸入關鍵字搜尋你想要的邦邦梗圖！</p>
+        <input type="text" id="meme-search" placeholder="輸入關鍵字..." class="anime-btn meme-search-input">
+      </div>
     </section>
+    <section id="meme-results" class="home-banner" style="flex-wrap:wrap; gap:16px; justify-content:flex-start;"></section>
   </main>
 
-  <script src="script/index.js"></script>
-  </body>
+  <script src="script/search.js"></script>
+
+</body>
 </html>
