@@ -1,7 +1,7 @@
 {
   "name": "BanGDream-Music",
   "short_name": "BanGDream-Music",
-  "start_url": "./index.html",
+  "start_url": "./home.html",
   "display": "standalone",
   "background_color": "#12b69b",
   "theme_color": "#12b69b",
